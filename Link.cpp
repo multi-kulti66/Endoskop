@@ -14,9 +14,11 @@
  * \param limitBarrierLeft		The limit barrier for the leftwards movement.
  */
 Link::Link(Stepper &stepperUp, Stepper &stepperRight, Stepper &stepperDown, Stepper &stepperLeft,
-           LimitBarrier &limitBarrierUp, LimitBarrier &limitBarrierRight, LimitBarrier &limitBarrierDown, LimitBarrier &limitBarrierLeft)
+           LimitBarrier &limitBarrierUp, LimitBarrier &limitBarrierRight, LimitBarrier &limitBarrierDown,
+           LimitBarrier &limitBarrierLeft)
 	: _stepperUp(stepperUp), _stepperRight(stepperRight), _stepperDown(stepperDown), _stepperLeft(stepperLeft),
-	  _limitBarrierUp(limitBarrierUp), _limitBarrierRight(limitBarrierRight), _limitBarrierDown(limitBarrierDown), _limitBarrierLeft(limitBarrierLeft)
+	  _limitBarrierUp(limitBarrierUp), _limitBarrierRight(limitBarrierRight), _limitBarrierDown(limitBarrierDown),
+	  _limitBarrierLeft(limitBarrierLeft)
 {}
 
 
@@ -26,13 +28,8 @@ Link::Link(Stepper &stepperUp, Stepper &stepperRight, Stepper &stepperDown, Step
  */
 boolean Link::haveReachedLimitBarriersForInit() const
 {
-	// TODO: wieder auskommentieren
-	/*if(_limitBarrierUp.hasReachedBarrier() && _limitBarrierRight.hasReachedBarrier() && _limitBarrierDown.hasReachedBarrier() && _limitBarrierLeft.hasReachedBarrier())
-	{
-		return true;
-	}*/
-
-	if(_limitBarrierUp.hasReachedBarrier())
+	if(_limitBarrierUp.hasReachedBarrier() && _limitBarrierRight.hasReachedBarrier() &&
+		_limitBarrierDown.hasReachedBarrier() && _limitBarrierLeft.hasReachedBarrier())
 	{
 		return true;
 	}
@@ -46,9 +43,11 @@ boolean Link::haveReachedLimitBarriersForInit() const
  */
 void Link::setMovementsToLimitBarrierForInit() const
 {
+	// TODO: position really 0?
 	// reset that max position will not be reached accidentally
 	setStepperPositionsForInit(0);
 
+	// TODO: all for forward movement?
 	prepareForForwardMovement(_stepperUp, _limitBarrierUp);
 	prepareForForwardMovement(_stepperRight, _limitBarrierRight);
 	prepareForForwardMovement(_stepperDown, _limitBarrierDown);
@@ -79,6 +78,8 @@ void Link::setMovementsToCenterForInit()
 	// after movement stepper position = 0
 	setStepperPositionsForInit(STEPS_FAST);
 
+	//TODO: rethink movements
+	// TODO: check if center position reached? (STEPS_BARRIER_TO_CENTER)
 	prepareForBackwardMovement(_stepperUp);
 	prepareForBackwardMovement(_stepperRight);
 	prepareForBackwardMovement(_stepperDown);
@@ -92,8 +93,9 @@ void Link::setMovementsToCenterForInit()
  * \brief Initializes the steppers for the next horizontal movement.
  * \param horizontalDirection	The horizontal direction in which the link should move.
  */
-void Link::setHorizontalDirectionMovement(HorizontalDirection horizontalDirection) const
+void Link::setHorizontalDirectionMovement(const HorizontalDirection horizontalDirection) const
 {
+	// TODO: are directions correct?
 	if(horizontalDirection == HorizontalDirection::HOR_RIGHT)
 	{
 		prepareForBackwardMovement(_stepperRight);
@@ -115,8 +117,9 @@ void Link::setHorizontalDirectionMovement(HorizontalDirection horizontalDirectio
  * \brief Initializes the steppers for the next vertical movement.
  * \param verticalDirection		The vertical direction in which the link should move.
  */
-void Link::setVerticalDirectionMovement(VerticalDirection verticalDirection) const
+void Link::setVerticalDirectionMovement(const VerticalDirection verticalDirection) const
 {
+	// TODO: are directions correct?
 	if(verticalDirection == VerticalDirection::VERT_UP)
 	{
 		prepareForBackwardMovement(_stepperUp);
@@ -166,7 +169,7 @@ void Link::update() const
  * \brief Sets all current positions and target positions.
  * \param position	The new stepper position
  */
-void Link::setStepperPositionsForInit(long position) const
+void Link::setStepperPositionsForInit(const long position) const
 {
 	_stepperUp.setCurrentPosition(position);
 	_stepperRight.setCurrentPosition(position);
@@ -182,6 +185,7 @@ void Link::setStepperPositionsForInit(long position) const
  */
 boolean Link::hasReachedPositiveEndPosition(Stepper &stepper) const
 {
+	// TODO: actually check limit barrier state (maybe for reinit current position -> when stepper overtwisted)
 	if(stepper.getCurrentPosition() >= MAX_POSITION)
 	{
 		return true;
@@ -230,12 +234,13 @@ boolean Link::isInPositivePosition(Stepper &stepper) const
 */
 void Link::prepareForForwardMovement(Stepper &stepper, LimitBarrier &limitBarrier) const
 {
+	// TODO: comment out when end stoppers are connected, otherwise floating values
 	/*if(hasReachedPositiveEndPosition(stepper) || limitBarrier.hasReachedBarrier())
 	{
 		return;
 	}*/
 
-	// TODO: comment out, if different speeds in positive / negative position
+	// TODO: rethink speeds in positive / negative direction -> what on init? better slow (set position before)
 	/*if(isInPositivePosition(stepper))
 	{
 		stepper.setForwardMovement(STEPS_FAST, SPEED_FAST);

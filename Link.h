@@ -13,8 +13,9 @@ class Link
 {
 public:
 	/* Constructors */
-	Link(Stepper& stepperUp, Stepper& stepperRight, Stepper& stepperDown, Stepper& stepperLeft,
-	     LimitBarrier& limitBarrierUp, LimitBarrier& limitBarrierRight, LimitBarrier& limitBarrierDown, LimitBarrier& limitBarrierLeft);
+	Link(Stepper &stepperUp, Stepper &stepperRight, Stepper &stepperDown, Stepper &stepperLeft,
+	     LimitBarrier &limitBarrierUp, LimitBarrier &limitBarrierRight, LimitBarrier &limitBarrierDown,
+	     LimitBarrier &limitBarrierLeft);
 
 
 	/* Methods */
@@ -22,8 +23,8 @@ public:
 	void setMovementsToLimitBarrierForInit() const;
 	boolean isCenteredForInit() const;
 	void setMovementsToCenterForInit();
-	void setHorizontalDirectionMovement(HorizontalDirection horizontalDirection) const;
-	void setVerticalDirectionMovement(VerticalDirection verticalDirection) const;
+	void setHorizontalDirectionMovement(const HorizontalDirection horizontalDirection) const;
+	void setVerticalDirectionMovement(const VerticalDirection verticalDirection) const;
 	boolean isMoving() const;
 	void update() const;
 
@@ -42,22 +43,22 @@ private:
 	long limitToCenterCounter = 0;
 
 	/* Components */
-	Stepper& _stepperUp;
-	Stepper& _stepperRight;
-	Stepper& _stepperDown;
-	Stepper& _stepperLeft;
-	LimitBarrier& _limitBarrierUp;
-	LimitBarrier& _limitBarrierRight;
-	LimitBarrier& _limitBarrierDown;
-	LimitBarrier& _limitBarrierLeft;
+	Stepper &_stepperUp;
+	Stepper &_stepperRight;
+	Stepper &_stepperDown;
+	Stepper &_stepperLeft;
+	LimitBarrier &_limitBarrierUp;
+	LimitBarrier &_limitBarrierRight;
+	LimitBarrier &_limitBarrierDown;
+	LimitBarrier &_limitBarrierLeft;
 
 	/* Methods */
-	void setStepperPositionsForInit(long position) const;
-	boolean hasReachedPositiveEndPosition(Stepper& stepper) const;
-	boolean hasReachedNegativeEndPosition(Stepper& stepper) const;
-	boolean isInPositivePosition(Stepper& stepper) const;
-	void prepareForForwardMovement(Stepper& stepper, LimitBarrier& limitBarrier) const;
-	void prepareForBackwardMovement(Stepper& stepper) const;
+	void setStepperPositionsForInit(const long position) const;
+	boolean hasReachedPositiveEndPosition(Stepper &stepper) const;
+	boolean hasReachedNegativeEndPosition(Stepper &stepper) const;
+	boolean isInPositivePosition(Stepper &stepper) const;
+	void prepareForForwardMovement(Stepper &stepper, LimitBarrier &limitBarrier) const;
+	void prepareForBackwardMovement(Stepper &stepper) const;
 };
 
 #endif

@@ -9,7 +9,7 @@ class Button
 {
 public:
 	/* Constructors */
-	Button(uint8_t pin);
+	Button(const uint8_t pin);
 
 
 	/* Methods */

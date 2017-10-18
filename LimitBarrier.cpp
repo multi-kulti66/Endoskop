@@ -6,7 +6,7 @@
  * \brief Assigns the pin and sets it to input mode.
  * \param pin	The digital pin value on the arduino.
  */
-LimitBarrier::LimitBarrier(uint8_t pin)
+LimitBarrier::LimitBarrier(const uint8_t pin)
 {
 	_pin = pin;
 	pinMode(_pin, INPUT);

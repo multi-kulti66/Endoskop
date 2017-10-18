@@ -7,7 +7,7 @@
  * \param xPin	The horizontal analog pin on the arduino.
  * \param yPin	The vertical analog pin on the arduino.
  */
-Joystick::Joystick(int xPin, int yPin)
+Joystick::Joystick(const int xPin, const int yPin)
 {
 	_xPin = xPin;
 	_yPin = yPin;
@@ -22,8 +22,8 @@ Joystick::Joystick(int xPin, int yPin)
  */
 void Joystick::read()
 {
-	uint16_t xValue = analogRead(_xPin);
-	uint16_t yValue = analogRead(_yPin);
+	const uint16_t xValue = analogRead(_xPin);
+	const uint16_t yValue = analogRead(_yPin);
 
 	horDir = convertToHorizontalDirection(xValue);
 	vertDir = convertToVerticalDirection(yValue);
@@ -55,7 +55,7 @@ VerticalDirection Joystick::getCurrentVerticalDirection() const
  * \param horValue		The analog value that should be converted.
  * \return The converted analog value.
  */
-HorizontalDirection Joystick::convertToHorizontalDirection(uint16_t horValue) const
+HorizontalDirection Joystick::convertToHorizontalDirection(const uint16_t horValue) const
 {
 	if(horValue < (MEAN_VALUE - DELTA_VALUE))
 	{
@@ -76,7 +76,7 @@ HorizontalDirection Joystick::convertToHorizontalDirection(uint16_t horValue) co
  * \param vertValue		The analog value that should be converted.
  * \return The converted analog value.
  */
-VerticalDirection Joystick::convertToVerticalDirection(uint16_t vertValue) const
+VerticalDirection Joystick::convertToVerticalDirection(const uint16_t vertValue) const
 {
 	if(vertValue < (MEAN_VALUE - DELTA_VALUE))
 	{

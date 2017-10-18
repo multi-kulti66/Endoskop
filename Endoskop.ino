@@ -19,11 +19,16 @@ Button button2(1);
 Button button3(2);
 Button button4(3);
 
-Button* buttons[NUMBER_OF_LINKS] = {
-		&button1
-	};
+Button *buttons[NUMBER_OF_LINKS] = {
+	// TODO: uncomment
+	&button1//,
+	//&button2,
+	//&button3,
+	//&button4
+};
 
 
+// TODO: uncomment limit barriers
 AccelStepper accelStepper1(AccelStepper::MotorInterfaceType::DRIVER, 28, 26);
 Stepper stepper1(accelStepper1);
 LimitBarrier limitBarrier1(6);
@@ -88,22 +93,40 @@ AccelStepper accelStepper16(AccelStepper::MotorInterfaceType::DRIVER, 24, 22);
 Stepper stepper16(accelStepper16);
 //LimitBarrier limitBarrier16(51);
 
-Stepper* steppers[NUMBER_OF_STEPPERS] = {
-		&stepper1,
-		&stepper2,
-		&stepper3,
-		&stepper4
-	};
+Stepper *steppers[NUMBER_OF_STEPPERS] = {
+	// TODO: uncomment
+	&stepper1,
+	&stepper2,
+	&stepper3,
+	&stepper4//,
+	//&stepper5,
+	//&stepper6,
+	//&stepper7,
+	//&stepper8,
+	//&stepper9,
+	//&stepper10,
+	//&stepper11,
+	//&stepper12,
+	//&stepper13,
+	//&stepper14,
+	//&stepper15,
+	//&stepper16,
+};
 
 
 Link link1(stepper1, stepper2, stepper3, stepper4, limitBarrier1, limitBarrier2, limitBarrier3, limitBarrier4);
+// TODO: uncomment
 //Link link2(stepper5, stepper6, stepper7, stepper8, limitBarrier5, limitBarrier6, limitBarrier7, limitBarrier8);
 //Link link3(stepper9, stepper10, stepper11, stepper12, limitBarrier9, limitBarrier10, limitBarrier11, limitBarrier12);
 //Link link4(stepper13, stepper14, stepper15, stepper16, limitBarrier13, limitBarrier14, limitBarrier15, limitBarrier16);
 
-Link* links[NUMBER_OF_LINKS] = {
-		&link1
-	};
+Link *links[NUMBER_OF_LINKS] = {
+	// TODO: uncomment
+	&link1//,
+	//&link2,
+	//&link3,
+	//&link4,
+};
 
 
 /* Variables */
@@ -269,6 +292,7 @@ void setup()
 {
 	Serial.begin(9600);
 
+	// TODO: uncomment when limit barriers are connected and code has been adjusted
 	/*while(!isInitialized)
 	{
 		if(areInMovement())

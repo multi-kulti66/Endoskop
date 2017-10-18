@@ -9,7 +9,7 @@ class LimitBarrier
 {
 public:
 	/* Constructors */
-	LimitBarrier(uint8_t pin);
+	LimitBarrier(const uint8_t pin);
 
 	/* Methods */
 	boolean hasReachedBarrier() const;

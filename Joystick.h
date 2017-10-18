@@ -11,7 +11,7 @@ class Joystick
 {
 public:
 	/* Constructors */
-	Joystick(int xPin, int yPin);
+	Joystick(const int xPin, const int yPin);
 
 	/* Methods */
 	void read();
@@ -30,8 +30,8 @@ private:
 	VerticalDirection vertDir = VerticalDirection::VERT_NONE;
 
 	/* Methods */
-	HorizontalDirection convertToHorizontalDirection(uint16_t horValue) const;
-	VerticalDirection convertToVerticalDirection(uint16_t vertValue) const;
+	HorizontalDirection convertToHorizontalDirection(const uint16_t horValue) const;
+	VerticalDirection convertToVerticalDirection(const uint16_t vertValue) const;
 };
 
 #endif // JOYSTICK_H

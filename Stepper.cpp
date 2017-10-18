@@ -5,7 +5,7 @@
  * \brief Initializes the stepper for usage via stepper driver.
  * \param stepper	The reference to the AccelStepper instance.
  */
-Stepper::Stepper(AccelStepper& stepper) : _stepper(stepper)
+Stepper::Stepper(AccelStepper &stepper) : _stepper(stepper)
 {
 	_stepper.setMaxSpeed(MAX_SPEED);
 	setCurrentPosition(0);
@@ -27,7 +27,7 @@ void Stepper::step() const
 * \param steps		The number of steps that should be moved.
 * \param speed		The speed in which the steps should be made.
 */
-void Stepper::setForwardMovement(uint8_t steps, float speed) const
+void Stepper::setForwardMovement(const uint8_t steps, const float speed) const
 {
 	_stepper.move(steps);
 	_stepper.setSpeed(speed);
@@ -39,7 +39,7 @@ void Stepper::setForwardMovement(uint8_t steps, float speed) const
  * \param steps		The number of steps that should be moved.
  * \param speed		The speed in which the steps should be made.
  */
-void Stepper::setBackwardMovement(uint8_t steps, float speed) const
+void Stepper::setBackwardMovement(const uint8_t steps, const float speed) const
 {
 	_stepper.move(-steps);
 	_stepper.setSpeed(speed);
@@ -49,7 +49,7 @@ void Stepper::setBackwardMovement(uint8_t steps, float speed) const
 /**
 * \brief Set the current position and target position.
 */
-void Stepper::setCurrentPosition(long position) const
+void Stepper::setCurrentPosition(const long position) const
 {
 	_stepper.setCurrentPosition(position);
 }

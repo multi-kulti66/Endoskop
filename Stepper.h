@@ -10,13 +10,13 @@ class Stepper
 {
 public:
 	/* Constructors */
-	Stepper(AccelStepper& stepper);
+	Stepper(AccelStepper &stepper);
 
 	/* Methods */
 	void step() const;
-	void setForwardMovement(uint8_t steps, float speed) const;
-	void setBackwardMovement(uint8_t steps, float speed) const;
-	void setCurrentPosition(long position) const;
+	void setForwardMovement(const uint8_t steps, const float speed) const;
+	void setBackwardMovement(const uint8_t steps, const float speed) const;
+	void setCurrentPosition(const long position) const;
 	long getCurrentPosition() const;
 	long getTargetPosition() const;
 	bool isRunning() const;
@@ -27,7 +27,7 @@ private:
 	const float DELTA_ZERO = 0.1;
 
 	/* References */
-	AccelStepper& _stepper;
+	AccelStepper &_stepper;
 };
 
 #endif // STEPPER_H
