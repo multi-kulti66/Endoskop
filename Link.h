@@ -30,14 +30,13 @@ public:
 
 private:
 	/* Constants */
-	const long STEPS_BARRIER_TO_CENTER = 1000;
-	const long MAX_POSITION = STEPS_BARRIER_TO_CENTER * 2;
+	const float SPEED_SLOW = 250;
+	const float SPEED_FAST = 500;
+	const float POS_NEG_SPEED_FACTOR = 1.5;
 
-	const uint16_t SPEED_SLOW = 250;
-	const uint16_t SPEED_FAST = 300;
+	const long POS_MAX_POSITION = 1600;
+	const long NEG_MAX_POSITION = -static_cast<float>(POS_MAX_POSITION) / POS_NEG_SPEED_FACTOR;
 
-	const uint8_t STEPS_SLOW = 1;
-	const uint8_t STEPS_FAST = 2;
 
 	/* Variables */
 	long limitToCenterCounter = 0;
@@ -57,8 +56,10 @@ private:
 	boolean hasReachedPositiveEndPosition(Stepper &stepper) const;
 	boolean hasReachedNegativeEndPosition(Stepper &stepper) const;
 	boolean isInPositivePosition(Stepper &stepper) const;
-	void prepareForForwardMovement(Stepper &stepper, LimitBarrier &limitBarrier) const;
-	void prepareForBackwardMovement(Stepper &stepper) const;
+	boolean prepareForFastForwardMovement(Stepper &stepper, LimitBarrier &limitBarrier) const;
+	boolean prepareForForwardMovement(Stepper &stepper, LimitBarrier &limitBarrier) const;
+	boolean prepareForFastBackwardMovement(Stepper &stepper) const;
+	boolean prepareForBackwardMovement(Stepper &stepper) const;
 };
 
 #endif

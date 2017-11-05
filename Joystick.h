@@ -22,6 +22,7 @@ private:
 	/* Constants */
 	const uint16_t MEAN_VALUE = 520;
 	const uint16_t DELTA_VALUE = 20;
+	const uint16_t DELTA_VALUE_FAST = 300;
 
 	/* Variables */
 	int _xPin; // analog pin for the horizontal value

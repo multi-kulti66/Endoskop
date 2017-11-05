@@ -14,115 +14,126 @@ const uint8_t NUMBER_OF_STEPPERS = NUMBER_OF_LINKS * 4;
 /* Components */
 Joystick joystick(A8, A9);
 
-Button button1(0);
-Button button2(1);
-Button button3(2);
-Button button4(3);
+//Button button1(0);
+//Button button2(1);
+//Button button3(2);
+//Button button4(3);
 
-Button *buttons[NUMBER_OF_LINKS] = {
-	// TODO: uncomment
-	&button1//,
-	//&button2,
-	//&button3,
-	//&button4
-};
+//Button *buttons[NUMBER_OF_LINKS] = {
+//	// TODO: uncomment
+//	//&button1,
+//	//&button2,
+//	//&button3,
+//	//&button4
+//};
 
-
-// TODO: uncomment limit barriers
+// 1. oben
 AccelStepper accelStepper1(AccelStepper::MotorInterfaceType::DRIVER, 28, 26);
 Stepper stepper1(accelStepper1);
-LimitBarrier limitBarrier1(6);
+LimitBarrier limitBarrier1(21);
 
+// 1. rechts
 AccelStepper accelStepper2(AccelStepper::MotorInterfaceType::DRIVER, 45, 43);
 Stepper stepper2(accelStepper2);
-LimitBarrier limitBarrier2(9);
+LimitBarrier limitBarrier2(20);
 
+// 1. unten
 AccelStepper accelStepper3(AccelStepper::MotorInterfaceType::DRIVER, 33, 31);
 Stepper stepper3(accelStepper3);
-LimitBarrier limitBarrier3(12);
+LimitBarrier limitBarrier3(19);
 
+// 1. links
 AccelStepper accelStepper4(AccelStepper::MotorInterfaceType::DRIVER, 37, 35);
 Stepper stepper4(accelStepper4);
-LimitBarrier limitBarrier4(15);
+LimitBarrier limitBarrier4(18);
 
+// 2. oben
 AccelStepper accelStepper5(AccelStepper::MotorInterfaceType::DRIVER, 41, 39);
 Stepper stepper5(accelStepper5);
-//LimitBarrier limitBarrier5(18);
+LimitBarrier limitBarrier5(17);
 
+// 2. rechts
 AccelStepper accelStepper6(AccelStepper::MotorInterfaceType::DRIVER, 32, 30);
 Stepper stepper6(accelStepper6);
-//LimitBarrier limitBarrier6(21);
+LimitBarrier limitBarrier6(0);
 
+// 2. unten
 AccelStepper accelStepper7(AccelStepper::MotorInterfaceType::DRIVER, 52, 50);
 Stepper stepper7(accelStepper7);
-//LimitBarrier limitBarrier7(24);
+LimitBarrier limitBarrier7(15);
 
+// 2. links
 AccelStepper accelStepper8(AccelStepper::MotorInterfaceType::DRIVER, 36, 34);
 Stepper stepper8(accelStepper8);
-//LimitBarrier limitBarrier8(27);
+LimitBarrier limitBarrier8(14);
 
+// 3. oben
 AccelStepper accelStepper9(AccelStepper::MotorInterfaceType::DRIVER, 25, 23);
 Stepper stepper9(accelStepper9);
-//LimitBarrier limitBarrier9(30);
+LimitBarrier limitBarrier9(1);
 
+// 3. rechts
 AccelStepper accelStepper10(AccelStepper::MotorInterfaceType::DRIVER, 44, 42);
 Stepper stepper10(accelStepper10);
-//LimitBarrier limitBarrier10(33);
+LimitBarrier limitBarrier10(16);
 
+// 3. unten
 AccelStepper accelStepper11(AccelStepper::MotorInterfaceType::DRIVER, 40, 38);
 Stepper stepper11(accelStepper11);
-//LimitBarrier limitBarrier11(36);
+LimitBarrier limitBarrier11(2);
 
+// 3. links
 AccelStepper accelStepper12(AccelStepper::MotorInterfaceType::DRIVER, 48, 46);
 Stepper stepper12(accelStepper12);
-//LimitBarrier limitBarrier12(39);
+LimitBarrier limitBarrier12(3);
 
+// 4. oben
 AccelStepper accelStepper13(AccelStepper::MotorInterfaceType::DRIVER, 49, 47);
 Stepper stepper13(accelStepper13);
-//LimitBarrier limitBarrier13(42);
+LimitBarrier limitBarrier13(4);
 
+// 4. rechts
 AccelStepper accelStepper14(AccelStepper::MotorInterfaceType::DRIVER, 53, 51);
 Stepper stepper14(accelStepper14);
-//LimitBarrier limitBarrier14(45);
+LimitBarrier limitBarrier14(5);
 
+// 4. unten
 AccelStepper accelStepper15(AccelStepper::MotorInterfaceType::DRIVER, 29, 27);
 Stepper stepper15(accelStepper15);
-//LimitBarrier limitBarrier15(48);
+LimitBarrier limitBarrier15(6);
 
+// 4. links
 AccelStepper accelStepper16(AccelStepper::MotorInterfaceType::DRIVER, 24, 22);
 Stepper stepper16(accelStepper16);
-//LimitBarrier limitBarrier16(51);
+LimitBarrier limitBarrier16(7);
 
 Stepper *steppers[NUMBER_OF_STEPPERS] = {
-	// TODO: uncomment
 	&stepper1,
 	&stepper2,
 	&stepper3,
-	&stepper4//,
-	//&stepper5,
-	//&stepper6,
-	//&stepper7,
-	//&stepper8,
-	//&stepper9,
-	//&stepper10,
-	//&stepper11,
-	//&stepper12,
-	//&stepper13,
-	//&stepper14,
-	//&stepper15,
-	//&stepper16,
+	&stepper4,
+	/*&stepper5,
+	&stepper6,
+	&stepper7,
+	&stepper8,*/
+	/*&stepper9,
+	&stepper10,
+	&stepper11,
+	&stepper12,*/
+	/*&stepper13,
+	&stepper14,
+	&stepper15,
+	&stepper16*/
 };
 
 
 Link link1(stepper1, stepper2, stepper3, stepper4, limitBarrier1, limitBarrier2, limitBarrier3, limitBarrier4);
-// TODO: uncomment
 //Link link2(stepper5, stepper6, stepper7, stepper8, limitBarrier5, limitBarrier6, limitBarrier7, limitBarrier8);
 //Link link3(stepper9, stepper10, stepper11, stepper12, limitBarrier9, limitBarrier10, limitBarrier11, limitBarrier12);
 //Link link4(stepper13, stepper14, stepper15, stepper16, limitBarrier13, limitBarrier14, limitBarrier15, limitBarrier16);
 
 Link *links[NUMBER_OF_LINKS] = {
-	// TODO: uncomment
-	&link1//,
+	&link1,
 	//&link2,
 	//&link3,
 	//&link4,
@@ -134,7 +145,7 @@ boolean haveReachedBarriers = false; // Indicates whether the steppers have reac
 boolean areCentered = false; // Indicates whether the steppers have reached the center for the initialization
 boolean isInitialized = false; // Indicates whether the initialization routine is finished
 
-uint8_t selectedLinkNumber = 1; // Indicates which link is currently selected
+uint8_t selectedLinkIndex = 0; // Indicates which link is currently selected
 
 
 /* Method definitions */
@@ -143,15 +154,11 @@ boolean haveReachedBarriersForInit();
 void setMovementsToBarrierForInit();
 boolean areCenteredForInit();
 void setMovementsToCenterForInit();
-boolean areInMovement();
-void setJoystickMovements();
+void setMovements();
 void update();
 
 
 /* Methods */
-/**
- * \brief Centers all steppers for a consistent start position for all steppers.
- */
 void initComponents()
 {
 	if(haveReachedBarriers == false)
@@ -183,10 +190,6 @@ void initComponents()
 }
 
 
-/**
- * \brief Indicates whether all steppers have reached the limit barriers.
- * \return true = all steppers have reached their limit barrier
- */
 boolean haveReachedBarriersForInit()
 {
 	for(uint8_t i = 0; i < NUMBER_OF_LINKS; i++)
@@ -201,9 +204,6 @@ boolean haveReachedBarriersForInit()
 }
 
 
-/**
- * \brief Initializes all steppers for the next movement towards the limit barriers.
- */
 void setMovementsToBarrierForInit()
 {
 	for(uint8_t i = 0; i < NUMBER_OF_LINKS; i++)
@@ -213,10 +213,6 @@ void setMovementsToBarrierForInit()
 }
 
 
-/**
- * \brief Indicates whether all steppers are centered.
- * \return true = all steppers have reached the center
- */
 boolean areCenteredForInit()
 {
 	for(uint8_t i = 0; i < NUMBER_OF_LINKS; i++)
@@ -231,9 +227,6 @@ boolean areCenteredForInit()
 }
 
 
-/**
- * \brief Initializes all steppers for the next movement towards the center.
- */
 void setMovementsToCenterForInit()
 {
 	for(uint8_t i = 0; i < NUMBER_OF_LINKS; i++)
@@ -243,42 +236,16 @@ void setMovementsToCenterForInit()
 }
 
 
-/**
- * \brief Indicates whether a link is still in movmenet.
- * \return true = a stepper has not reached the target position yet
- */
-boolean areInMovement()
+void setMovements()
 {
-	for(uint8_t i = 0; i < NUMBER_OF_LINKS; i++)
-	{
-		if(links[i]->isMoving())
-		{
-			return true;
-		}
-	}
-
-	return false;
-}
-
-
-/**
- * \brief Set the next link movements, depending on the current joystick state.
- */
-void setJoystickMovements()
-{
+	// TODO: read button state and set selectedLinkIndex
 	joystick.read();
 
-	for(uint8_t i = 0; i < NUMBER_OF_LINKS; i++)
-	{
-		links[i]->setHorizontalDirectionMovement(joystick.getCurrentHorizontalDirection());
-		links[i]->setVerticalDirectionMovement(joystick.getCurrentVerticalDirection());
-	}
+	links[selectedLinkIndex]->setHorizontalDirectionMovement(joystick.getCurrentHorizontalDirection());
+	links[selectedLinkIndex]->setVerticalDirectionMovement(joystick.getCurrentVerticalDirection());
 }
 
 
-/**
- * \brief Updates all links and lets all steppers move which didn't reach the target position.
- */
 void update()
 {
 	for(uint8_t i = 0; i < NUMBER_OF_LINKS; i++)
@@ -292,29 +259,16 @@ void setup()
 {
 	Serial.begin(9600);
 
-	// TODO: uncomment when limit barriers are connected and code has been adjusted
-	/*while(!isInitialized)
+	while(!isInitialized)
 	{
-		if(areInMovement())
-		{
-			update();
-		}
-		else
-		{
-			initComponents();
-		}
-	}*/
+		initComponents();
+		update();
+	}
 }
 
 
 void loop()
 {
-	if(areInMovement())
-	{
-		update();
-	}
-	else
-	{
-		setJoystickMovements();
-	}
+	setMovements();
+	update();
 }

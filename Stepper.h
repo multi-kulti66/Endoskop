@@ -1,7 +1,6 @@
 #ifndef STEPPER_H
 #define STEPPER_H
 
-#include "Arduino.h"
 #include "AccelStepper.h"
 
 
@@ -14,8 +13,8 @@ public:
 
 	/* Methods */
 	void step() const;
-	void setForwardMovement(const uint8_t steps, const float speed) const;
-	void setBackwardMovement(const uint8_t steps, const float speed) const;
+	boolean setForwardMovement(const float speed) const;
+	boolean setBackwardMovement(const float speed) const;
 	void setCurrentPosition(const long position) const;
 	long getCurrentPosition() const;
 	long getTargetPosition() const;
@@ -23,8 +22,7 @@ public:
 
 private:
 	/* Constants */
-	const uint16_t MAX_SPEED = 500;
-	const float DELTA_ZERO = 0.1;
+	const float MAX_SPEED = 750;
 
 	/* References */
 	AccelStepper &_stepper;

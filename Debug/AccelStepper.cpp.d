@@ -1,6 +1,6 @@
-C:\Users\Andre\AppData\Local\Temp\VMBuilds\Endoskop\mega_atmega2560\Debug\AccelStepper.cpp.o: \
- C:\Users\Andre\AppData\Local\Temp\VMBuilds\Endoskop\mega_atmega2560\Debug\AccelStepper.cpp \
- C:\Users\Andre\AppData\Local\Temp\VMBuilds\Endoskop\mega_atmega2560\Debug\AccelStepper.h \
+C:\Users\andre\AppData\Local\Temp\VMBuilds\Endoskop\mega_atmega2560\Debug\AccelStepper.cpp.o: \
+ C:\Users\andre\AppData\Local\Temp\VMBuilds\Endoskop\mega_atmega2560\Debug\AccelStepper.cpp \
+ C:\Users\andre\AppData\Local\Temp\VMBuilds\Endoskop\mega_atmega2560\Debug\AccelStepper.h \
  C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/Arduino.h \
  C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/binary.h \
  C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/WCharacter.h \

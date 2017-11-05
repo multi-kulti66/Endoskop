@@ -5,9 +5,11 @@
 
 enum class HorizontalDirection
 {
+	HOR_LEFT_FAST = -2,
 	HOR_LEFT = -1,
 	HOR_NONE = 0,
-	HOR_RIGHT = 1
+	HOR_RIGHT = 1,
+	HOR_RIGHT_FAST = 2
 };
 
 #endif // HORIZONTAL_DIRECTION_H

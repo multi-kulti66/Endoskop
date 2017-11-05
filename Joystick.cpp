@@ -57,14 +57,24 @@ VerticalDirection Joystick::getCurrentVerticalDirection() const
  */
 HorizontalDirection Joystick::convertToHorizontalDirection(const uint16_t horValue) const
 {
+	if(horValue < (MEAN_VALUE < DELTA_VALUE_FAST))
+	{
+		return HorizontalDirection::HOR_RIGHT_FAST;
+	}
+
 	if(horValue < (MEAN_VALUE - DELTA_VALUE))
 	{
-		return HorizontalDirection::HOR_LEFT;
+		return HorizontalDirection::HOR_RIGHT;
+	}
+
+	if(horValue > (MEAN_VALUE + DELTA_VALUE_FAST))
+	{
+		return HorizontalDirection::HOR_LEFT_FAST;
 	}
 
 	if(horValue > (MEAN_VALUE + DELTA_VALUE))
 	{
-		return HorizontalDirection::HOR_RIGHT;
+		return HorizontalDirection::HOR_LEFT;
 	}
 
 	return HorizontalDirection::HOR_NONE;
@@ -78,14 +88,24 @@ HorizontalDirection Joystick::convertToHorizontalDirection(const uint16_t horVal
  */
 VerticalDirection Joystick::convertToVerticalDirection(const uint16_t vertValue) const
 {
+	if(vertValue < (MEAN_VALUE < DELTA_VALUE_FAST))
+	{
+		return VerticalDirection::VERT_DOWN_FAST;
+	}
+
 	if(vertValue < (MEAN_VALUE - DELTA_VALUE))
 	{
-		return VerticalDirection::VERT_UP;
+		return VerticalDirection::VERT_DOWN;
+	}
+
+	if(vertValue > (MEAN_VALUE + DELTA_VALUE_FAST))
+	{
+		return VerticalDirection::VERT_UP_FAST;
 	}
 
 	if(vertValue > (MEAN_VALUE + DELTA_VALUE))
 	{
-		return VerticalDirection::VERT_DOWN;
+		return VerticalDirection::VERT_UP;
 	}
 
 	return VerticalDirection::VERT_NONE;

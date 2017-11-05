@@ -19,5 +19,10 @@ LimitBarrier::LimitBarrier(const uint8_t pin)
  */
 boolean LimitBarrier::hasReachedBarrier() const
 {
-	return digitalRead(this->_pin);
+	if(digitalRead(this->_pin) == HIGH)
+	{
+		return false;
+	}
+
+	return true;
 }

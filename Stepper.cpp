@@ -1,10 +1,6 @@
 #include "Stepper.h"
 
 
-/**
- * \brief Initializes the stepper for usage via stepper driver.
- * \param stepper	The reference to the AccelStepper instance.
- */
 Stepper::Stepper(AccelStepper &stepper) : _stepper(stepper)
 {
 	_stepper.setMaxSpeed(MAX_SPEED);
@@ -12,76 +8,59 @@ Stepper::Stepper(AccelStepper &stepper) : _stepper(stepper)
 }
 
 
-/**
- * \brief Steps to the target position.
- * \note If target position equals current position or speed equals zero nothing happens.
- */
 void Stepper::step() const
 {
 	_stepper.runSpeedToPosition();
 }
 
 
-/**
-* \brief Set new target position in forward direction.
-* \param steps		The number of steps that should be moved.
-* \param speed		The speed in which the steps should be made.
-*/
-void Stepper::setForwardMovement(const uint8_t steps, const float speed) const
+boolean Stepper::setForwardMovement(const float speed) const
 {
-	_stepper.move(steps);
+	if(isRunning())
+	{
+		return false;
+	}
+
+	_stepper.move(1);
 	_stepper.setSpeed(speed);
+	return true;
 }
 
 
-/**
- * \brief Set new target position in backward direction.
- * \param steps		The number of steps that should be moved.
- * \param speed		The speed in which the steps should be made.
- */
-void Stepper::setBackwardMovement(const uint8_t steps, const float speed) const
+boolean Stepper::setBackwardMovement(const float speed) const
 {
-	_stepper.move(-steps);
+	if(isRunning())
+	{
+		return false;
+	}
+
+	_stepper.move(-1);
 	_stepper.setSpeed(speed);
+	return true;
 }
 
 
-/**
-* \brief Set the current position and target position.
-*/
 void Stepper::setCurrentPosition(const long position) const
 {
 	_stepper.setCurrentPosition(position);
 }
 
 
-/**
- * \brief The current position.
- * \return The current position in steps.
- */
 long Stepper::getCurrentPosition() const
 {
 	return _stepper.currentPosition();
 }
 
 
-/**
- * \brief The target position.
- * \return The target position in steps.
- */
 long Stepper::getTargetPosition() const
 {
 	return _stepper.targetPosition();
 }
 
 
-/**
- * \brief Indicates whether the target position was reached.
- * \return true = target position equals current position
- */
 bool Stepper::isRunning() const
 {
-	if(_stepper.currentPosition() != _stepper.targetPosition())
+	if(_stepper.distanceToGo() != 0)
 	{
 		return true;
 	}
