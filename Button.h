@@ -9,7 +9,7 @@ class Button
 {
 public:
 	/* Constructors */
-	Button(const uint8_t pin);
+	Button(const int pin);
 
 
 	/* Methods */
@@ -17,7 +17,7 @@ public:
 
 private:
 	/* Variables */
-	uint8_t _pin; // Represents the assigned pin on the arduino.
+	int _pin; // Represents the assigned pin on the arduino.
 };
 
 #endif // BUTTON_H

@@ -29,10 +29,10 @@ void Link::setMovementsToLimitBarrierForInit() const
 	// -1 so that pos_neg_factor has no influence
 	setStepperPositionsForInit(-1);
 
-	prepareForForwardMovement(_stepperUp, _limitBarrierUp);
-	prepareForForwardMovement(_stepperRight, _limitBarrierRight);
-	prepareForForwardMovement(_stepperDown, _limitBarrierDown);
-	prepareForForwardMovement(_stepperLeft, _limitBarrierLeft);
+	prepareForFastForwardMovement(_stepperUp, _limitBarrierUp);
+	prepareForFastForwardMovement(_stepperRight, _limitBarrierRight);
+	prepareForFastForwardMovement(_stepperDown, _limitBarrierDown);
+	prepareForFastForwardMovement(_stepperLeft, _limitBarrierLeft);
 }
 
 
@@ -57,10 +57,10 @@ void Link::setMovementsToCenterForInit()
 
 	// set position the way that pos_neg_factor has no influence
 	setStepperPositionsForInit(-1);
-	prepareForBackwardMovement(_stepperUp);
-	prepareForBackwardMovement(_stepperRight);
-	prepareForBackwardMovement(_stepperDown);
-	prepareForBackwardMovement(_stepperLeft);
+	prepareForFastBackwardMovement(_stepperUp);
+	prepareForFastBackwardMovement(_stepperRight);
+	prepareForFastBackwardMovement(_stepperDown);
+	prepareForFastBackwardMovement(_stepperLeft);
 	limitToCenterCounter++;
 }
 

@@ -24,7 +24,7 @@ void Joystick::read()
 {
 	const uint16_t xValue = analogRead(_xPin);
 	const uint16_t yValue = analogRead(_yPin);
-
+	
 	horDir = convertToHorizontalDirection(xValue);
 	vertDir = convertToVerticalDirection(yValue);
 }
@@ -57,7 +57,7 @@ VerticalDirection Joystick::getCurrentVerticalDirection() const
  */
 HorizontalDirection Joystick::convertToHorizontalDirection(const uint16_t horValue) const
 {
-	if(horValue < (MEAN_VALUE < DELTA_VALUE_FAST))
+	if(horValue < (MEAN_VALUE - DELTA_VALUE_FAST))
 	{
 		return HorizontalDirection::HOR_RIGHT_FAST;
 	}
@@ -88,7 +88,7 @@ HorizontalDirection Joystick::convertToHorizontalDirection(const uint16_t horVal
  */
 VerticalDirection Joystick::convertToVerticalDirection(const uint16_t vertValue) const
 {
-	if(vertValue < (MEAN_VALUE < DELTA_VALUE_FAST))
+	if(vertValue < (MEAN_VALUE - DELTA_VALUE_FAST))
 	{
 		return VerticalDirection::VERT_DOWN_FAST;
 	}

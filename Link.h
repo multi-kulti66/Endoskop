@@ -32,7 +32,7 @@ private:
 	/* Constants */
 	const float SPEED_SLOW = 250;
 	const float SPEED_FAST = 500;
-	const float POS_NEG_SPEED_FACTOR = 1.5;
+	const float POS_NEG_SPEED_FACTOR = 1.25;
 
 	const long POS_MAX_POSITION = 1600;
 	const long NEG_MAX_POSITION = -static_cast<float>(POS_MAX_POSITION) / POS_NEG_SPEED_FACTOR;

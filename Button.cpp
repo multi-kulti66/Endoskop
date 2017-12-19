@@ -6,7 +6,7 @@
  * \brief Assigns the pin and sets it to input mode.
  * \param pin	The digital pin value on the arduino.
  */
-Button::Button(const uint8_t pin)
+Button::Button(const int pin)
 {
 	_pin = pin;
 	pinMode(_pin, INPUT);

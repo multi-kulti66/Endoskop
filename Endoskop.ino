@@ -7,25 +7,24 @@
 #include "Link.h"
 
 /* Constants */
-const uint8_t NUMBER_OF_LINKS = 1;
+const uint8_t NUMBER_OF_LINKS = 4;
 const uint8_t NUMBER_OF_STEPPERS = NUMBER_OF_LINKS * 4;
 
 
 /* Components */
 Joystick joystick(A8, A9);
 
-//Button button1(0);
-//Button button2(1);
-//Button button3(2);
-//Button button4(3);
+Button button1(A3);
+Button button2(A2);
+Button button3(A1);
+Button button4(A0);
 
-//Button *buttons[NUMBER_OF_LINKS] = {
-//	// TODO: uncomment
-//	//&button1,
-//	//&button2,
-//	//&button3,
-//	//&button4
-//};
+Button *buttons[NUMBER_OF_LINKS] = {
+	&button1,
+	&button2,
+	&button3,
+	&button4
+};
 
 // 1. oben
 AccelStepper accelStepper1(AccelStepper::MotorInterfaceType::DRIVER, 28, 26);
@@ -112,31 +111,31 @@ Stepper *steppers[NUMBER_OF_STEPPERS] = {
 	&stepper2,
 	&stepper3,
 	&stepper4,
-	/*&stepper5,
+	&stepper5,
 	&stepper6,
 	&stepper7,
-	&stepper8,*/
-	/*&stepper9,
+	&stepper8,
+	&stepper9,
 	&stepper10,
 	&stepper11,
-	&stepper12,*/
-	/*&stepper13,
+	&stepper12,
+	&stepper13,
 	&stepper14,
 	&stepper15,
-	&stepper16*/
+	&stepper16
 };
 
 
 Link link1(stepper1, stepper2, stepper3, stepper4, limitBarrier1, limitBarrier2, limitBarrier3, limitBarrier4);
-//Link link2(stepper5, stepper6, stepper7, stepper8, limitBarrier5, limitBarrier6, limitBarrier7, limitBarrier8);
-//Link link3(stepper9, stepper10, stepper11, stepper12, limitBarrier9, limitBarrier10, limitBarrier11, limitBarrier12);
-//Link link4(stepper13, stepper14, stepper15, stepper16, limitBarrier13, limitBarrier14, limitBarrier15, limitBarrier16);
+Link link2(stepper5, stepper6, stepper7, stepper8, limitBarrier5, limitBarrier6, limitBarrier7, limitBarrier8);
+Link link3(stepper9, stepper10, stepper11, stepper12, limitBarrier9, limitBarrier10, limitBarrier11, limitBarrier12);
+Link link4(stepper13, stepper14, stepper15, stepper16, limitBarrier13, limitBarrier14, limitBarrier15, limitBarrier16);
 
 Link *links[NUMBER_OF_LINKS] = {
 	&link1,
-	//&link2,
-	//&link3,
-	//&link4,
+	&link2,
+	&link3,
+	&link4,
 };
 
 
@@ -146,6 +145,7 @@ boolean areCentered = false; // Indicates whether the steppers have reached the 
 boolean isInitialized = false; // Indicates whether the initialization routine is finished
 
 uint8_t selectedLinkIndex = 0; // Indicates which link is currently selected
+uint8_t counter = 0;
 
 
 /* Method definitions */
@@ -154,6 +154,7 @@ boolean haveReachedBarriersForInit();
 void setMovementsToBarrierForInit();
 boolean areCenteredForInit();
 void setMovementsToCenterForInit();
+void getButtonState();
 void setMovements();
 void update();
 
@@ -235,10 +236,21 @@ void setMovementsToCenterForInit()
 	}
 }
 
+void getButtonState()
+{
+	for(int i = NUMBER_OF_LINKS - 1; i >= 0; i--)
+	{
+		if(buttons[i]->isButtonPressed())
+		{
+			selectedLinkIndex = i;
+		}
+	}
+}
+
 
 void setMovements()
 {
-	// TODO: read button state and set selectedLinkIndex
+	getButtonState();
 	joystick.read();
 
 	links[selectedLinkIndex]->setHorizontalDirectionMovement(joystick.getCurrentHorizontalDirection());
